@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <img src="./images/logo.svg" alt="rock-paper-scissors logo">
+      <div id="scoreContainer">
+        <h4>score</h4>
+        <div id="scores">
+          <div class="score">
+            <h5>Hooman</h5>
+            <span id="player-score">0</span>
+          </div>
+          <div class="score">
+            <h5>CPU</h5>
+            <span id="cpu-score">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div id="button-container">
+        <img id="triangle" src="./images/bg-triangle.svg" alt="">
+        <button class="btn-rounded btn-paper" data-choice="paper"><span class="btn-wrapper"><img src="./images/icon-paper.svg" alt=""></span></button>
+        <button class="btn-rounded btn-scissors" data-choice="scissors"><span class="btn-wrapper"><img src="./images/icon-scissors.svg" alt=""></span></button>
+        <button class="btn-rounded btn-rock" data-choice="rock"><span class="btn-wrapper"><img src="./images/icon-rock.svg" alt=""></span></button>
+      </div>
+    </div>
+  </div>
+  <button id="button-rules">rules</button>
+  <div class="hidden"></div>
+</body>
+</html>
