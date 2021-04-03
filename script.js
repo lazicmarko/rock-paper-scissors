@@ -5,12 +5,13 @@ const buttonContainer = document.querySelector('#button-container');
 const main = document.querySelector('#main');
 let gameContainer;
 let playAgainButton;
+let newGameButton;
 const possibleSelections = ['rock', 'paper', 'scissors'];
 let userPick;
 let cpuPick;
 let playerScore = 0;
 let computerScore = 0;
-const numberOfRounds = 1;
+const numberOfRounds = 3;
 
 function getRandomPick() {
   return possibleSelections[Math.floor(Math.random() * 3)];
@@ -19,11 +20,11 @@ function updateScore(whoWon = 'tie') {
   const result = document.querySelector('.result-component > p');
 
   if (whoWon === 'user') {
-    playerScore++;
+    playerScore += 1;
     result.textContent = 'you won';
     playerScoreSpan.textContent = playerScore;
   } else if (whoWon === 'cpu') {
-    computerScore++;
+    computerScore += 1;
     result.textContent = 'you lose';
     cpuScoreSpan.textContent = computerScore;
   } else {
@@ -90,15 +91,40 @@ function createResultComponent() {
 
   return resultComponent;
 }
+
+function createNewGameComponent() {
+  const newGameTitle = document.createElement('p');
+  const newGameBtn = document.createElement('button');
+  const newGameComponent = document.createElement('div');
+
+  newGameBtn.setAttribute('id', 'new-game');
+  newGameComponent.setAttribute('id', 'new-game-component');
+  newGameTitle.textContent = 'game over';
+  newGameBtn.textContent = 'new game';
+  newGameComponent.append(newGameTitle, newGameBtn);
+
+  return newGameComponent;
+}
+
 function isGameOver(rounds) {
   if (playerScore === rounds || computerScore === rounds) {
-    alert('game over');
+    setTimeout(() => {
+      computerScore = 0;
+      playerScore = 0;
+      gameContainer.remove();
+      main.append(createNewGameComponent());
+      newGameButton = document.getElementById('new-game');
+      newGameButton.addEventListener('click', () => {
+        playerScoreSpan.textContent = playerScore;
+        cpuScoreSpan.textContent = computerScore;
+        document.getElementById('new-game-component').remove();
+        main.append(buttonContainer);
+      });
+    }, 1000);
   }
 }
 function showResult() {
   setTimeout(() => {
-    gameContainer.firstElementChild.after(createResultComponent());
-    checkWinner(userPick, cpuPick);
     playAgainButton = document.querySelector('#play-again');
     playAgainButton.addEventListener('click', () => { // play next round
       gameContainer.remove();
@@ -119,7 +145,10 @@ buttons.forEach((button) => {
     document.getElementById('loader').addEventListener('animationend', () => { // removing loader and adding cpu pick component
       gameContainer.childNodes[1].remove(); // removes loader
       gameContainer.append(createPlayComponent(cpuPick, 'cpu'));
+      gameContainer.firstElementChild.after(createResultComponent());
+      checkWinner(userPick, cpuPick);
       showResult();
+      isGameOver(numberOfRounds);
     });
   });
 });
