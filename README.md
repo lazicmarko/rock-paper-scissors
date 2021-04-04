@@ -5,5 +5,7 @@ Link to the project:  https://www.frontendmentor.io/challenges/rock-paper-scisso
 Game ends when one of the players reach 3 wins.
 
 TBA Responsiveness
+
 TBA bubbles animation for the winner
+
 TBA rules modal
