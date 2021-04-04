@@ -4,7 +4,7 @@ Link to the project:  https://www.frontendmentor.io/challenges/rock-paper-scisso
 
 Live preview: https://lazicmarko.github.io/rock-paper-scissors/
 
-Game ends when one of the players reach 3 wins.
+Game ends when one of the players reaches 3 wins.
 
 TBA Responsiveness
 
